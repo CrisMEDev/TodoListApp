@@ -1,6 +1,9 @@
+import { Todo } from "../classes";
+import { todoList } from "../index";
 
 // Referencias en el html
 const divTodoList = document.querySelector('.todo-list');
+const txtInput    = document.querySelector('.new-todo');
 
 
 export const crearTodoHtml = ( todo ) => {
@@ -24,4 +27,23 @@ export const crearTodoHtml = ( todo ) => {
     return div.firstElementChild;
 
 }
+
+
+
+//                                                      --- EVENTOS ---
+
+
+txtInput.addEventListener('keyup', ( event ) => { // El evento nos dice que tecla fue la que presionó el usuario
+
+    if ( event.keyCode === 13 && txtInput.value != '' ){    // Trece es el codigo del enter
+
+        // console.log( txtInput.value );
+        const nuevoTodo = new Todo( txtInput.value );
+        todoList.nuevoTodo( nuevoTodo );
+        crearTodoHtml( nuevoTodo );
+
+        txtInput.value = '';
+    }
+
+});
 
