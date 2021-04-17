@@ -1,7 +1,8 @@
-import { f_saludar } from './js/componenetes.js';
+import { Todo } from './classes/todo.class.js';
+
 import './styles.css';
 
-const nombre = 'Cristian!'
 
-f_saludar(nombre);
+const tarea = new Todo('Aprender JavaScript');
 
+console.log(tarea);
