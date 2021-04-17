@@ -14,7 +14,14 @@ export class TodoList{
         
     }
 
-    marcarCompletado( idTodo ){
+    toggleCompletado( idTodo ){
+
+        for ( const todo of this.todos ){
+            if ( todo.id == idTodo ){                   // idTodo es num por eso se usa solo doble ==
+                todo.completado = !todo.completado;
+            }
+            break;
+        }
 
     }
 

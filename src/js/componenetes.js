@@ -47,3 +47,17 @@ txtInput.addEventListener('keyup', ( event ) => { // El evento nos dice que tecl
 
 });
 
+divTodoList.addEventListener('click', (event) => {
+    const nombreElemento = event.target.localName;                      // Input, label or button
+
+    const todoElemento = (event.target.parentElement).parentElement;    // Para obtener el li del todo creado
+
+    const todoId = todoElemento.getAttribute('data-id')                 // Obtiene un attributo de una etiqueta, en este caso
+                                                                        // el id del li seleccionado 
+
+    if ( nombreElemento.includes('input') ){                             // Se hizo click en el check
+        todoList.toggleCompletado( todoId );
+        todoElemento.classList.toggle('completed');
+    }
+
+});
