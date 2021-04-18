@@ -55,9 +55,13 @@ divTodoList.addEventListener('click', (event) => {
     const todoId = todoElemento.getAttribute('data-id')                 // Obtiene un attributo de una etiqueta, en este caso
                                                                         // el id del li seleccionado 
 
-    if ( nombreElemento.includes('input') ){                             // Se hizo click en el check
+    if ( nombreElemento.includes('input') ){                            // Se hizo click en el check
         todoList.toggleCompletado( todoId );
         todoElemento.classList.toggle('completed');
+    }
+    else if ( nombreElemento.includes('button') ){                      // Hay que borrar el todo
+        todoList.eliminarTodo( todoId );
+        divTodoList.removeChild( todoElemento );
     }
 
 });

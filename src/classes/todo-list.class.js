@@ -11,6 +11,8 @@ export class TodoList{
     }
 
     eliminarTodo( idTodo ){
+
+        this.todos = this.todos.filter( todo => todo.id != idTodo )  // idTodo es un num por eso se usa solo un =
         
     }
 
