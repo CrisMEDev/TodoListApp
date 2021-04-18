@@ -5,11 +5,8 @@ import './styles.css';
 
 export const todoList = new TodoList();
 
-const tarea = new Todo('Aprender JavaScript');
 
-todoList.nuevoTodo(tarea);
-
-// console.log(tarea);
-console.log(todoList);
-
-crearTodoHtml( tarea );
+// todoList.todos.forEach( todo => crearTodoHtml( todo ) );
+// La linea anterior es similar a la siguiente y solo aplica cuando se recibe un argumento
+// en el crearTodoHtml y se tiene un argumento del callback de la funcion llamada, en este caso el forEach
+todoList.todos.forEach( crearTodoHtml );
