@@ -12,14 +12,14 @@ export class TodoList{
 
     eliminarTodo( idTodo ){
 
-        this.todos = this.todos.filter( todo => todo.id != idTodo )  // idTodo es un num por eso se usa solo un =
+        this.todos = this.todos.filter( todo => todo.id != idTodo );  // idTodo es un num por eso se usa solo un =
         
     }
 
     toggleCompletado( idTodo ){
 
         for ( const todo of this.todos ){
-            if ( todo.id == idTodo ){                   // idTodo es num por eso se usa solo doble ==
+            if ( todo.id == idTodo ){                                // idTodo es num por eso se usa solo doble ==
                 todo.completado = !todo.completado;
             }
             break;
@@ -28,7 +28,7 @@ export class TodoList{
     }
 
     borrarTodosCompletados(){
-        
+        this.todos = this.todos.filter( todo => !todo.completado );  // Se regresan todos los todos no completados
     }
 
 }

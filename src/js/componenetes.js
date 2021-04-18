@@ -2,8 +2,9 @@ import { Todo } from "../classes";
 import { todoList } from "../index";
 
 // Referencias en el html
-const divTodoList = document.querySelector('.todo-list');
-const txtInput    = document.querySelector('.new-todo');
+const divTodoList   = document.querySelector('.todo-list');
+const txtInput      = document.querySelector('.new-todo');
+const buttonBorrar  = document.querySelector('.clear-completed');
 
 
 export const crearTodoHtml = ( todo ) => {
@@ -62,6 +63,21 @@ divTodoList.addEventListener('click', (event) => {
     else if ( nombreElemento.includes('button') ){                      // Hay que borrar el todo
         todoList.eliminarTodo( todoId );
         divTodoList.removeChild( todoElemento );
+    }
+
+});
+
+buttonBorrar.addEventListener('click', () => {
+
+    todoList.borrarTodosCompletados();
+
+    for (let i = divTodoList.children.length - 1; i >= 0; i-- ){
+        const elemento = divTodoList.children[i];
+        // console.log(elemento);
+
+        if ( elemento.classList.contains('completed') ){
+            divTodoList.removeChild(elemento);
+        }
     }
 
 });
