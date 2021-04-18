@@ -1,3 +1,5 @@
+import { Todo } from "./todo.class";
+
 export class TodoList{
 
     constructor(){
@@ -49,11 +51,16 @@ export class TodoList{
 
             this.todos = JSON.parse( localStorage.getItem('todo') );    // Convierte el json string de los todos a objetos
                                                                         // pero son instancias de la clase Todo
-            console.log( 'cargarLS', this.todos );
+            // console.log( 'cargarLS', this.todos );
 
         } else {
             this.todos = [];
         }
+
+
+        // this.todos = this.todos.map( obj => Todo.fromJson(obj) );       // Convierte los obj del local storage a instancias Todo
+        // La lina anterior es lo mismo que la siguiente
+        this.todos = this.todos.map( Todo.fromJson );
 
     }
 
