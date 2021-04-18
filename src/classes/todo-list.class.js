@@ -1,4 +1,5 @@
 import { Todo } from "./todo.class";
+import { todosContados } from "../js/componenetes";
 
 export class TodoList{
 
@@ -6,29 +7,32 @@ export class TodoList{
 
         // this.todos = [];
         this.cargarLocalStorage();
+        this.countTodo();
 
     }
 
     nuevoTodo( todo ){
         this.todos.push( todo );
         this.guardarLocalStorage();
+        this.countTodo();
     }
 
     eliminarTodo( idTodo ){
 
         this.todos = this.todos.filter( todo => todo.id != idTodo );  // idTodo es un num por eso se usa solo un =
         this.guardarLocalStorage();
+        this.countTodo();
         
     }
 
     toggleCompletado( idTodo ){
-
-        for ( const todo of this.todos ){
+        for ( let todo of this.todos ){
             if ( todo.id == idTodo ){                                // idTodo es num por eso se usa solo doble ==
                 todo.completado = !todo.completado;
                 this.guardarLocalStorage();
+                this.countTodo();
+                break;
             }
-            break;
         }
 
     }
@@ -36,6 +40,7 @@ export class TodoList{
     borrarTodosCompletados(){
         this.todos = this.todos.filter( todo => !todo.completado );     // Se regresan todos los todos no completados
         this.guardarLocalStorage();
+        this.countTodo();
     }
 
     guardarLocalStorage(){
@@ -62,6 +67,15 @@ export class TodoList{
         // La lina anterior es lo mismo que la siguiente
         this.todos = this.todos.map( Todo.fromJson );
 
+    }
+
+    countTodo() {
+        let pendientes = 0;
+        let countBox = todosContados.firstElementChild;
+        for (let todo of this.todos) {
+            (!todo.completado === true) ? pendientes++ : null;
+        }
+        countBox.innerHTML = pendientes;
     }
 
 }

@@ -14,4 +14,4 @@ export const todoList = new TodoList();
 // en el crearTodoHtml y se tiene un argumento del callback de la funcion llamada, en este caso el forEach
 todoList.todos.forEach( crearTodoHtml );
 
-console.log( todoList.todos );      // Se demuestra con este log que ahora los obj del localStorage son todos
+// console.log( todoList.todos );      // Se demuestra con este log que ahora los obj del localStorage son todos
